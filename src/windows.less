@@ -31,11 +31,6 @@
 	background-repeat: repeat-x;
 }
 
-QWidget {
-	font-family: 'Segoe UI';
-	font-weight: normal;
-}
-
 #TopBar {
 	border: 0px;
 	margin: 0px;
@@ -45,7 +40,8 @@ QWidget {
 #TopBar QMenuBar {
 	.topbar_background;
 	color: @mori_win_color_toptab_fg_inactive;
-	font-weight: normal;
+	font-family: @platform_font;
+	font-weight: light;
 
 	&::item {
 
@@ -73,6 +69,8 @@ QWidget {
   color: @win_sys_color_control_fg;
 	background-color: @win_sys_color_control_bg;
 	padding: 2px;
+	font-family: @platform_font;
+	font-weight: light;
 
 	&::item {
 

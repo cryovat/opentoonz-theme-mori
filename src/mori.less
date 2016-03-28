@@ -98,11 +98,17 @@
 	}
 }
 
+QWidget,
+QMenu,
+QMenuBar,
+QMainWindow {
+	font-family: @platform_font;
+	font-weight: normal;
+}
+
 QWidget {
 	.mori_basebg;
 	color: @mori_color_fg;
-	font-family: @platform_font;
-	font-weight: normal;
 }
 
 QFrame {
