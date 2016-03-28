@@ -1,0 +1,98 @@
+#ViewerPanel {
+	.mori_basebg(5%);
+
+	& #ToolBarContainer
+    {
+    	border-top: 1px solid @mori_color_bg_alternate;
+    	margin-top: 1px;
+    	padding-top: 3px;
+    }
+}
+
+FlipBook #ToolBarContainer
+{
+	border-top: 1px solid @mori_color_bg_alternate;
+	margin-top: 1px;
+	padding-top: 3px;
+}
+
+/* Flipbook toolbar-specific */
+#ToolBarContainer #ScrollLeftButton {
+	margin-top: 1px;
+}
+#ToolBarContainer #ScrollRightButton {
+	margin-top: 1px;
+}
+
+#ViewerFpsSlider
+{
+	background-color: @mori_color_bg_alternate;
+	.set_margin(19px, 0px);
+	border: 1px solid black;
+	height: 21px;
+
+	&::handle {
+		border-image: url("@{image_url}/handle_border.png")6;
+		border-width: 6px;
+		image: none;
+		min-width: 5px;
+	}
+	&::add-line {
+		image: url("@{image_url}/fpssb_g_rarrow.png");
+		width: 20px;
+		subcontrol-position: right;
+		subcontrol-origin: margin;
+		margin: 0px;
+		&:pressed {
+			image: url("@{image_url}/fpssb_g_rarrow_pressed.png");
+		}
+	}
+	&::sub-line {
+		image: url("@{image_url}/fpssb_g_larrow.png");
+		width: 20px;
+		subcontrol-position: left;
+		subcontrol-origin: margin;
+		margin: 0px;
+		&:pressed {
+			image: url("@{image_url}/fpssb_g_larrow_pressed.png");
+		}
+	}
+}
+
+#FlipConsolePlayToolBar{
+	border: none;
+	& QToolButton {
+	    height: 14px;
+	}
+}
+
+FlipSlider {
+	qproperty-PBHeight: 20;
+
+	qproperty-PBOverlay: url("@{image_url}/flipslider.png");
+	qproperty-PBMarker:  url("@{image_url}/flipmarker.png");
+	qproperty-PBColorMarginLeft: 1;
+	qproperty-PBColorMarginTop: 1;
+	qproperty-PBColorMarginRight: 1;
+	qproperty-PBColorMarginBottom: 1;
+
+	qproperty-PBMarkerMarginLeft: 6;
+	qproperty-PBMarkerMarginRight: 6;
+	qproperty-baseColor: #626262;
+	qproperty-notStartedColor: rgb(204,34,34);
+	qproperty-startedColor: rgb(200,128,128);
+	qproperty-baseColor: #626262;
+}
+
+Ruler {
+	qproperty-ParentBGColor: @mori_color_editor_bg;
+	qproperty-ScaleColor: @mori_color_disabled_fg;
+}
+
+#ComboViewerToolOptions{
+	border: 1px;
+	.mori_outset_box;
+}
+#RulerToolOptionValues{
+    color: black;
+}

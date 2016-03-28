@@ -1,0 +1,70 @@
+/*XsheetColumnHeader Right-click menu*/
+#xsheetColumnAreaMenu_Preview {
+	background-color: rgb(230,230,120);
+}
+#xsheetColumnAreaMenu_Lock {
+	background-color: rgb(245,245,245);
+}
+#xsheetColumnAreaMenu_Camstand {
+	background-color: rgb(255,164,128);
+}
+#xsheetColumnAreaMenu_Preview,
+#xsheetColumnAreaMenu_Lock,
+#xsheetColumnAreaMenu_Camstand {
+	color: black;
+	&:selected {
+		background-color: rgb(0,0,128);
+	}
+}
+
+XsheetViewer {
+	qproperty-TextColor: darken(@mori_color_fg, 5%);
+	qproperty-BGColor: darken(@mori_color_bg, 5%);
+	qproperty-LightLineColor:darken(@mori_color_bg, 50%);
+	qproperty-MarkerLineColor: darken(@color_opentoonz, 20%);
+	qproperty-PreviewFrameTextColor: @color_opentoonz;
+	qproperty-CurrentRowBgColor: @mori_color_selected_bg;
+
+	qproperty-EmptyColumnHeadColor: @mori_color_bg;
+	qproperty-SelectedColumnTextColor: @color_opentoonz;
+
+	qproperty-EmptyCellColor: @mori_color_editor_bg;
+	qproperty-NotEmptyColumnColor: @mori_color_bg;
+	qproperty-SelectedEmptyCellColor: lighten(@mori_color_editor_bg, 5%);
+
+	qproperty-LevelColumnColor: rgb(76,110,76);
+	qproperty-LevelColumnBorderColor: rgb(143,179,143);
+	qproperty-SelectedLevelColumnColor: rgb(107,140,107);
+
+	qproperty-VectorColumnColor: rgb(123,123,76);
+	qproperty-VectorColumnBorderColor: rgb(187,187,154);
+	qproperty-SelectedVectorColumnColor: rgb(140,140,96);
+
+	qproperty-ChildColumnColor: rgb(106,82,107);
+	qproperty-ChildColumnBorderColor: rgb(177,163,179);
+	qproperty-SelectedChildColumnColor: rgb(122,97,122);
+
+	qproperty-FullcolorColumnColor: rgb(101,122,150);
+	qproperty-FullcolorColumnBorderColor: rgb(158,184,187);
+	qproperty-SelectedFullcolorColumnColor: rgb(136,150,167);
+
+	qproperty-FxColumnColor: rgb(86,85,60);
+	qproperty-FxColumnBorderColor: rgb(149,149,138);
+	qproperty-SelectedFxColumnColor: rgb(106,109,90);
+
+	qproperty-ReferenceColumnColor: rgb(97,97,97);
+	qproperty-ReferenceColumnBorderColor: rgb(162,162,162);
+	qproperty-SelectedReferenceColumnColor: rgb(130,130,130);
+
+	qproperty-PaletteColumnColor: rgb(58,101,95);
+	qproperty-PaletteColumnBorderColor: rgb(134,172,167);
+	qproperty-SelectedPaletteColumnColor: rgb(95,133,129);
+
+	qproperty-ColumnHeadPastelizer: rgb(0,0,0);
+	qproperty-SelectedColumnHead: @mori_color_selected_bg;
+
+	qproperty-LightLightBGColor: rgb(250,250,250);
+	qproperty-LightBGColor: rgb(240,240,240);
+	qproperty-DarkBGColor: rgb(225,225,225);
+	qproperty-DarkLineColor: rgb(150,150,150);
+}

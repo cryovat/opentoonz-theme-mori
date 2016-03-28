@@ -1,0 +1,41 @@
+#CleanupSettingsFrame,
+#LoadLevelFrame,
+#SolidLineFrame{
+	//.mori_inset_box;
+  margin-bottom: 10px;
+}
+
+#CleanupSettingsHeadLabel,
+#LoadLevelHeadLabel,
+#PsdSettingsHeadLabel,
+#PsdSettingsGroupBox::title,
+#FxSettingsPreviewShowLabel {
+	color: @mori_color_fg;
+}
+
+#PsdSettingsGroupBox {
+	.mori_inset_box;
+}
+
+#FileDoesNotExistLabel {
+	color: rgb(255,50,50);
+}
+
+#CleanupSettingsShowButton,
+#LoadLevelShowButton,
+#FxSettingsPreviewShowButton {
+	border-width: 2px;
+	padding: 0px;
+	margin: 0px;
+	border-image: url("@{image_url}/handle_border.png")5;
+	image: url("@{image_url}/plus.png");
+	image-position: center center;
+
+	&:checked {
+		image: url("@{image_url}/minus.png");
+	}
+}
+
+ParamsPage {
+	qproperty-TextColor: @mori_color_fg;
+}

@@ -1,0 +1,86 @@
+#StyleEditorTabBar {
+	.mori_basebg(15%);
+	&::tab{
+		.set_padding( 2px, 1px );
+		font-size: 12px;
+		min-width: 40px;
+		border-width: 1px;
+	     	border-top-left-radius: 3px;
+	     	border-top-right-radius: 3px;
+		.mori_outset_box(5%); /* for non selected tab */
+		border-bottom-color: @mori_color_bg_alternate; /* for non selected tab */
+
+		&:selected {
+			.mori_outset_box;
+		     	border-bottom-color: @mori_color_bg; /* same as the pane color */
+			/* expand/overlap to the left and right by 4px */
+			margin-left: -2px;
+			margin-right: -2px;
+		}
+		&:first:selected {
+			margin-left: 0; /* the first selected tab has nothing to overlap with on the left */
+		}
+		&:last:selected {
+			margin-right: 0; /* the last selected tab has nothing to overlap with on the right */
+		}
+		&:only-one {
+			margin: 0; /* if there is only one tab, we don't want overlapping margins */
+		}
+	}
+}
+
+#HexagonalColorWheel {
+	qproperty-BGColor: @mori_color_bg;
+}
+/* Customize Horizontal QSlider that have name "colorSlider"  */
+#colorSlider {
+	&::groove:horizontal {
+		height: 20;
+		border-image: none;
+		border-width: 1;
+		height: 1px;
+	}
+	&::handle:horizontal {
+		width: 8px;
+		margin: -8px -4px;
+	}
+}
+
+#colorSliderAddButton,
+#colorSliderSubButton
+{
+	border-image: url("@{image_url}/colorslider_button_bg.png")2;
+	padding: 0px;
+	margin: 0px;
+	border: 2px;
+	image-position: center center;
+}
+
+#colorSliderAddButton
+{
+	image: url("@{image_url}/colorslider_add.png");
+	&:pressed {
+		image: url("@{image_url}/colorslider_add_pressed.png");
+	}
+}
+
+#colorSliderSubButton
+{
+	image: url("@{image_url}/colorslider_sub.png");
+	&:pressed {
+		image: url("@{image_url}/colorslider_sub_pressed.png");
+	}
+}
+
+#PlainColorPageParts
+{
+	.mori_outset_box;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+}
+
+#colorSliderLabel,
+#colorSliderField
+{
+	font-size: 14px;
+}

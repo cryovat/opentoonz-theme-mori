@@ -1,0 +1,108 @@
+#FunctionParametersPanel
+{
+	border: 1px solid @mori_color_fg;
+}
+#FunctionEditorTree,#ShortcutTree
+{
+    &::branch {
+    	&:adjoins-item {
+    		border-image: url("@{image_url}/tree17_branch-end.png") 0;
+    	}
+
+    	&:has-siblings {
+    		border-image: url("@{image_url}/tree17_vline.png") 0;
+    		&:adjoins-item {
+    			border-image: url("@{image_url}/tree17_branch-more.png") 0;
+    		}
+    	}
+
+    	&:has-children {
+    		&:closed {
+    			border-image: none;
+    			image: url("@{image_url}/tree17_branch-closed_nosib.png");
+    		}
+    		&:open {
+    			border-image: none;
+    			image: url("@{image_url}/tree17_branch-open_nosib.png");
+    		}
+
+    		&:has-siblings {
+    			&:closed {
+    				border-image: none;
+    				image: url("@{image_url}/tree17_branch-closed.png");
+    			}
+    			&:open {
+    				border-image: none;
+    				image: url("@{image_url}/tree17_branch-open.png");
+    			}
+    		}
+    	}
+    }
+}
+
+FunctionPanel {
+	qproperty-BGColor: rgb(48,48,48);
+	qproperty-ValueLineColor: rgb(72,72,72);
+	qproperty-FrameLineColor: rgb(96,96,96);
+	qproperty-OtherCurvesColor: rgb(128,128,128);
+	qproperty-RulerBackground: rgb(48,48,48);
+	qproperty-TextColor: rgb(230,230,230);
+	qproperty-SubColor: black;
+	qproperty-SelectedColor: #a8bee7;
+}
+
+FunctionTreeView {
+	qproperty-TextColor: rgb(230,230,230);
+	qproperty-CurrentTextColor: rgb(230, 100, 100);
+}
+
+SpreadsheetViewer {
+	qproperty-LightLightBGColor: rgb(64,64,64);
+	qproperty-CurrentRowBgColor: rgb(80,96,130);
+	qproperty-LightLineColor: rgb(32,32,32);
+	qproperty-MarkerLineColor: rgb(30, 150, 196);
+	qproperty-BGColor: rgb(72,72,72);
+	qproperty-VerticalLineColor: rgb(120,120,120);
+	qproperty-KeyFrameColor: rgb(153,93,29);
+	qproperty-KeyFrameBorderColor: rgb(201,176,75);
+	qproperty-SelectedKeyFrameColor: rgb(151,128,86);
+	qproperty-InBetweenColor: rgb(102,98,80);
+	qproperty-InBetweenBorderColor: rgb(205,206,200);
+	qproperty-SelectedInBetweenColor: rgb(126,128,121);
+	qproperty-SelectedEmptyColor: rgb(108,108,108);
+	qproperty-SelectedSceneRangeEmptyColor: rgb(117,117,117);
+	qproperty-TextColor: rgb(230,230,230);
+	qproperty-ColumnHeaderBorderColor: rgb(142,142,142);
+	qproperty-SelectedColumnTextColor: rgb(230, 100, 100);
+}
+#keyFrameNavigator
+{
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+}
+
+#ExpressionField
+{
+	.mori_inset_box;
+	border-width: 2px;
+	border-radius: 2px;
+	margin: 0px;
+}
+
+#FunctionSegmentViewerLinkButton
+{
+	border: 2px;
+    margin: 0px;
+	background-image: url("@{image_url}/segment_unlinked.png");
+	.mori_outset_box;
+	&:checked {
+		background-image: url("@{image_url}/segment_linked.png");
+		.mori_inset_box;
+	}
+	&:disabled{
+		background-image: url("@{image_url}/segment_disabled.png");
+		.mori_outset_box;
+	    border: 1px;
+	}
+}

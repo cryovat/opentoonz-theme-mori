@@ -1,0 +1,45 @@
+#PushButton_NoPadding {
+  	padding-left: 3px;
+  	padding-right: 3px;
+  	padding-top: 3px;
+  	padding-bottom: 3px;
+}
+
+#CameraSettingsButton
+{
+	padding: 2px;
+	border: 0px;
+}
+
+#CameraSettingsRadioButton::indicator {
+  	.mori_lock_button_regular;
+    width: 21px;
+    height: 21px;
+}
+
+#CameraSettingsDPI{
+	color: @mori_color_fg;
+}
+
+#CameraSettingsRadioButton_Small {
+	padding: 0px;
+	&::indicator {
+		width: 11px;
+		height: 21px;
+    .mori_lock_button_regular;
+	}
+}
+
+#ForceSquaredPixelButton {
+  margin: 0px;
+  padding: 0px;
+  background-color: transparent;
+  border: none;
+  border-radius: 0px;
+  padding: 0px;
+  image: url("@{image_url}/material/equal-unchecked.png");
+
+  &:checked {
+    image: url("@{image_url}/material/equal-checked.png");
+  }
+}

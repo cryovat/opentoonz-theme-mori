@@ -1,0 +1,68 @@
+QDialog #dialogButtonFrame {
+	// Want this to match the rest
+}
+
+#SceneSettings QLabel {
+	// Text in this is title color in original version
+}
+
+#PreferencesPopup {
+	font-size: 40px;
+}
+
+#PreferencesPopup QListWidget {
+	font-size: 12px;
+}
+
+#OutputSettingsLabel {
+	font-weight: bold;
+}
+
+#OutputSettingsBox {
+	.mori_inset_box(5%);
+	border-radius: @mori_border_radius_editor;
+	padding: 3px 7px;
+}
+
+#OutputSettingsBox QFrame {
+	background-color: darken(@mori_color_bg, 5%);;
+}
+
+#OutputSettingsShowButton {
+	border: 2px;
+	padding: 0px;
+	border-image: url("@{image_url}/handle_border.png")5;
+	image: url("@{image_url}/plus.png");
+	image-position: center center;
+
+	&:checked
+	{
+		image: url("@{image_url}/minus.png");
+	}
+}
+
+#IntPairField,
+#DoublePairField {
+	qproperty-LightLineColor: rgb(155,155,155);
+	qproperty-DarkLineColor: rgb(47,47,47);
+	qproperty-HandleLeftPixmap: url("@{image_url}/h_slider_left.png");
+	qproperty-HandleRightPixmap: url("@{image_url}/h_slider_right.png");
+	qproperty-HandleLeftGrayPixmap: url("@{image_url}/h_slider_left_disabled.png");
+    qproperty-HandleRightGrayPixmap: url("@{image_url}/h_slider_right_disabled.png");
+}
+
+#FxSettingsLabel{
+	color: rgb(160,230,128);
+}
+
+#FxSettings{
+	border-width: 0px;
+	border-bottom: 3px double rgb(64,64,64);
+}
+
+#FxSettingsHelpButton{
+	color: rgb(160,200,255);
+}
+
+#MatchLineButton {
+}

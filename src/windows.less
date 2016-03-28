@@ -1,0 +1,169 @@
+@platform_font: "Segoe UI";
+
+@win_sys_color_titlebar: rgb(255, 255, 255);
+@win_sys_color_control_bg: rgb(242, 242, 242);
+@win_sys_color_border: rgb(215, 215, 215);
+@win_sys_color_menu_border: rgb(204, 204, 204);
+
+@win_sys_color_control_fg: rgb(0, 0, 0);
+@win_sys_color_control_fg_disabled: rgb(109, 109, 109);
+@win_sys_color_control_bg: rgb(242, 242, 242);
+
+@win_sys_color_selection_bg: rgb(204, 232, 255);
+@win_sys_color_selection_bg_disabled: rgb(228, 228, 228);
+@win_sys_color_selection_border: rgb(153, 209, 255);
+
+@mori_win_color_toptab_fg_inactive: rgb(150, 150, 150);
+@mori_win_color_toptab_fg_hover: rgb(60, 60, 60);
+@mori_win_color_toptab_fg_active: rgb(255, 255, 255);
+
+@mori_win_grad_toptab_bg: ~"qlineargradient(x1:0, y1:0, x1:0, y1:1, stop:0"darken(@color_opentoonz, 15)~", stop: 1 "darken(@color_opentoonz, 20%)~")";
+@mori_win_grad_toptab_border: ~"qlineargradient(x1:0, y1:0, x1:0, y1:1, stop:0"darken(@color_opentoonz, 15)~", stop: 1 "darken(@color_opentoonz, 60%)~")";
+
+.topbar_background {
+	background-color: @win_sys_color_titlebar;
+}
+
+.topbar_background_with_image {
+	.topbar_background;
+	background-image: url("@{image_url}/custom/topbar_bg.png");
+	background-position: bottom;
+	background-repeat: repeat-x;
+}
+
+QWidget {
+	font-family: 'Segoe UI';
+	font-weight: normal;
+}
+
+#TopBar {
+	border: 0px;
+	margin: 0px;
+	padding: 0;
+}
+
+#TopBar QMenuBar {
+	.topbar_background;
+	color: @mori_win_color_toptab_fg_inactive;
+	font-weight: normal;
+
+	&::item {
+
+		padding: 2px 5px;
+		border: 1px solid transparent;
+
+		&:selected{
+			background: @win_sys_color_selection_bg;
+			border: 1px solid @win_sys_color_selection_border;
+			color: black;
+		}
+		&:disabled{
+			//.baseBG(light, 5%);
+			//color: @m_disabledTxtColor;
+		}
+		&:disabled:selected{
+			//background: rgb(108,118,128);
+		}
+	}
+}
+
+#TopBar QMenu {
+
+	border: 1px solid @win_sys_color_menu_border;
+  color: @win_sys_color_control_fg;
+	background-color: @win_sys_color_control_bg;
+	padding: 2px;
+
+	&::item {
+
+		padding: 3px 25px;
+		border: 1px solid transparent;
+
+		&:selected{
+			background: @win_sys_color_selection_bg;
+			border: 1px solid @win_sys_color_selection_border;
+			color: black;
+		}
+		&:disabled{
+			color: @win_sys_color_control_fg_disabled;
+		}
+		&:disabled:selected{
+			border-color: @win_sys_color_selection_bg_disabled;
+			background-color: @win_sys_color_selection_bg_disabled;
+		}
+	}
+
+	&::separator {
+		border-style: solid;
+		margin-left: 25px;
+		margin-right: 3px;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		border: 0px;
+		height: 1px;
+				background-color: @win_sys_color_border;
+	}
+}
+
+#TopBarTabContainer {
+	.topbar_background_with_image;
+
+	margin: 0px;
+	margin-bottom: 1px;
+	border: 0px;
+	padding-top: 8px;
+	padding-right: 16px;
+}
+
+#TopBarTab {
+	.topbar_background_with_image;
+
+	border: 0px;
+
+	margin: 0px;
+	padding-top: 2px;
+	padding-left: 10px;
+
+	&::tab {
+
+		border: 0px;
+		padding: 0px;
+		padding-bottom: 4px;
+
+		background-color: transparent;
+		color: @mori_win_color_toptab_fg_inactive;
+
+//		border-top-color: darken(@color_opentoonz, 10%);
+
+		border-top-left-radius: 1px;
+		border-top-right-radius: 1px;
+
+		font-size: 14px;
+		font-weight: light;
+		width: 80px;
+		height: 30px;
+
+		&:hover {
+			color: @mori_win_color_toptab_fg_hover;
+		}
+
+		&:selected {
+
+			color: @mori_win_color_toptab_fg_active;
+
+			border-top: 1px solid darken(@color_opentoonz, 60%);
+			border-left: 1px solid @mori_win_grad_toptab_border;
+			border-right: 1px solid @mori_win_grad_toptab_border;
+
+			background: @mori_win_grad_toptab_bg;
+		}
+	}
+}
+
+#StackedMenuBar {
+  // TODO: Find out what this is
+  background-color: transparent;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+}

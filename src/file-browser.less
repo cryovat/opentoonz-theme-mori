@@ -1,0 +1,59 @@
+/*-----------File Browser------------*/
+#DirTreeView, #FunctionEditorTree, #ShortcutTree, #FxTreeView
+{
+	.mori_inset_box;
+	margin: 0px;
+	alternate-background-color: @mori_color_bg_alternate;
+}
+
+#DirTreeView::branch {
+	&:adjoins-item {
+		border-image: url("@{image_url}/tree_branch-end.png") 0;
+	}
+
+	&:has-siblings {
+		border-image: url("@{image_url}/tree_vline.png") 0;
+		&:adjoins-item
+		{
+			border-image: url("@{image_url}/tree_branch-more.png") 0;
+		}
+	}
+	&:has-children {
+		&:closed {
+			border-image: none;
+			image: url("@{image_url}/tree_branch-closed_nosib.png");
+		}
+		&:open {
+			border-image: none;
+			image: url("@{image_url}/tree_branch-open_nosib.png");
+		}
+
+		&:has-siblings {
+			&:closed {
+				border-image: none;
+				image: url("@{image_url}/tree_branch-closed.png");
+			}
+			&:open {
+				border-image: none;
+				image: url("@{image_url}/tree_branch-open.png");
+			}
+		}
+	}
+}
+
+DvItemViewerPanel {
+	qproperty-TextColor: @mori_color_fg;
+	qproperty-AlternateBackground: @mori_color_bg_alternate;
+	qproperty-SelectedTextColor: @mori_color_fg;
+	qproperty-FolderTextColor: darken(@mori_color_fg, 5%);
+	qproperty-SelectedItemBackground: @mori_color_selected_bg;
+}
+
+DvDirTreeView {
+	qproperty-TextColor: @mori_color_fg;
+	qproperty-SelectedTextColor: @mori_color_fg;
+	qproperty-FolderTextColor: darken(@mori_color_fg, 5%);
+	qproperty-SelectedFolderTextColor: @mori_color_fg;
+	qproperty-SelectedItemBackground: @mori_color_selected_bg;
+	alternate-background-color: @mori_color_bg_alternate;
+}

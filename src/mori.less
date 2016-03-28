@@ -1,0 +1,563 @@
+// out: mori.qss, sourcemap: false, compress: false
+
+@image_url: "imgs";
+@color_opentoonz: rgb(19, 198, 33);
+
+@import "util.less";
+@import "windows.less";
+
+@mori_color_base_ui: desaturate(@color_opentoonz, 90%);
+
+@mori_color_bg: darken(@mori_color_base_ui, 15%);
+@mori_color_bg_alternate: darken(@mori_color_bg, 8%);
+@mori_color_fg: lighten(@mori_color_base_ui, 40%);
+@mori_color_bg_hover: @mori_color_base_ui;
+
+@mori_color_disabled_bg: @mori_color_bg;
+@mori_color_disabled_fg: darken(@mori_color_fg, 30%);
+
+@mori_color_selected_bg: darken(@color_opentoonz, 25%);
+@mori_color_selected_border: darken(@color_opentoonz, 20%);
+
+@mori_color_menu_border: darken(@mori_color_bg, 20%);
+
+@mori_color_editor_bg: darken(@mori_color_bg, 10%);
+@mori_color_editor_border: darken(@mori_color_bg, 15%);
+
+@mori_color_button_bg: lighten(@mori_color_bg, 5%);
+@mori_color_button_border: @mori_color_editor_border;
+
+@mori_padding_container: 5px 7px;
+@mori_padding_menu: 5px 0;
+@mori_padding_menu_item: 3px 25px;
+@mori_padding_menu_separator: 0px;
+@mori_padding_editor: 2px 5px;
+@mori_padding_button: 3px 7px;
+
+@mori_margin_container: 0;
+@mori_margin_menu: 0;
+@mori_margin_menu_item: 0px 7px;
+@mori_margin_menu_separator: 5px 0px;
+@mori_margin_editor: 1px 3px;
+
+@mori_border_radius_editor: 2px;
+
+@mori_gradient_handle: ~"qlineargradient(x1:0, y1:0, x2:0, y2:0.25, stop:0"lighten(@mori_color_button_bg, 30%)~", stop: 1"lighten(@mori_color_button_bg, 0%)~")";
+@mori_gradient_handle_focus: ~"qlineargradient(x1:0, y1:0, x2:0, y2:0.25, stop:0"lighten(@mori_color_button_bg, 40%)~", stop: 1"lighten(@mori_color_button_bg, 15%)~")";
+
+.mori_basebg(@dark: 0%) {
+	background-color: darken(@mori_color_bg, @dark);
+}
+
+.mori_border(@top, @side, @bottom, @dark: 0%) {
+	.mori_basebg(@dark);
+	border-left-color: darken(@top, @dark);
+	border-top-color: darken(@side, @dark);
+	border-right-color: darken(@side, @dark);
+	border-bottom-color: darken(@bottom, @dark);
+}
+
+.mori_border_inset(@dark: 0%) {
+	.mori_border(@mori_color_fg, @mori_color_fg, @mori_color_fg);
+	border-style: inset;
+}
+
+.mori_editor_defaults {
+	background-color: @mori_color_editor_bg;
+	border: 1px solid @mori_color_editor_border;
+
+	border-radius: @mori_border_radius_editor;
+
+	padding: @mori_padding_editor;
+	margin: @mori_margin_editor;
+}
+
+.mori_editor_disabled_defaults {
+	background-color: @mori_color_disabled_bg;
+	color: @mori_color_disabled_fg;
+}
+
+.mori_lock_button_regular {
+	background-color: transparent;
+	border-width: 0px;
+	width: 18px;
+	height: 18px;
+	&:unchecked {
+		image: url("@{image_url}/material/lock-open-outline.png");
+
+		&:hover {
+			image: url("@{image_url}/material/lock-plus.png");
+		}
+	}
+	&:checked {
+		image: url("@{image_url}/material/lock.png");
+
+		&:hover {
+			image: url("@{image_url}/material/lock-open.png");
+		}
+	}
+}
+
+QWidget {
+	.mori_basebg;
+	color: @mori_color_fg;
+	font-family: @platform_font;
+	font-weight: normal;
+}
+
+QFrame {
+	margin: 0px;
+	border: 0px;
+	padding: 0px;
+}
+
+QDialog {
+	.mori_basebg;
+}
+
+QMainWindow::separator
+{
+    background: yellow;
+    width: 10px; /* when vertical */
+    height: 10px; /* when horizontal */
+}
+
+.mori_inset_box(@dark: 5%) {
+	.mori_basebg(@dark);
+
+	border-top: 1px solid @mori_color_editor_border;
+	border-left: 1px solid @mori_color_editor_border;
+
+	border-right: 1px solid lighten(@mori_color_bg, 10%);
+	border-bottom: 1px solid lighten(@mori_color_bg, 10%);
+}
+
+.mori_outset_box(@dark: 0%) {
+	.mori_basebg(@dark);
+
+	border-top: 1px solid lighten(@mori_color_bg, 10%);
+	border-left: 1px solid lighten(@mori_color_bg, 10%);
+
+	border-right: 1px solid @mori_color_editor_border;
+	border-bottom: 1px solid @mori_color_editor_border;;
+}
+
+QListWidget {
+ 	.mori_inset_box;
+
+	padding: @mori_padding_container;
+	margin: @mori_margin_container;
+
+	alternate-background-color: darken(@mori_color_bg, 8%);
+
+	&::item
+	{
+	    color: @mori_color_fg;
+			padding: 2px 1px;
+
+			&:selected {
+				background-color: @mori_color_selected_bg;
+				border: 1px solid @mori_color_selected_border;
+			}
+	}
+
+}
+
+QTreeWidget {
+ 	.mori_basebg(5%);
+
+	padding: @mori_padding_container;
+	margin: @mori_margin_container;
+
+	alternate-background-color: @mori_color_bg_alternate;
+
+	border-right: 1px solid lighten(@mori_color_bg, 10%);
+	border-bottom: 1px solid lighten(@mori_color_bg, 10%);
+
+	&::item
+	{
+	    color: @mori_color_fg;
+			margin: 0;
+			padding: 0;
+
+			&:selected {
+				background-color: @mori_color_selected_bg;
+				border: 1px solid @mori_color_selected_border;
+			}
+	}
+
+	QLineEdit {
+		padding: 0;
+		margin: 0;
+		height: 20px;
+		width: 100%;
+	}
+
+}
+
+QStatusBar {
+	background-color: pink;
+}
+
+QMenuBar {
+	.mori_basebg;
+}
+
+QMenu {
+	.mori_basebg(-5%);
+
+	border: 1px solid darken(@mori_color_bg, 20%);
+
+	padding: @mori_padding_menu;
+	margin: @mori_margin_menu;
+
+	&::item {
+
+		border: 1px solid transparent;
+
+		padding: @mori_padding_menu_item;
+		margin: @mori_margin_menu_item;
+
+		&:selected {
+			background-color: @mori_color_selected_border;
+			border: 1px solid @mori_color_selected_bg;
+		}
+
+		&:disabled {
+			color: @mori_color_disabled_fg;
+			border: transparent;
+		}
+
+		&:disabled:selected {
+			background-color: @mori_color_disabled_bg;
+		}
+	}
+
+	&::separator {
+		padding: @mori_padding_menu_separator;
+		margin: @mori_margin_menu_separator;
+		border-left: 0px;
+		border-right: 0px;
+		border-top: 1px solid @mori_color_menu_border;
+		border-bottom: 1px solid @mori_color_disabled_fg;
+		height: 0px;
+	}
+}
+
+QToolBar {
+
+	margin: 0px;
+	padding: 0px;
+
+	&::separator {
+		background-color: @mori_color_editor_bg;
+		border-top: 1px solid @mori_color_editor_border;
+		border-left: 1px solid @mori_color_editor_border;
+		border-bottom: 1px solid lighten(@mori_color_bg, 10%);
+		border-right: 1px solid lighten(@mori_color_bg, 10%);
+
+		&:horizontal {
+			background-color: @mori_color_editor_bg;
+			width: 1px;
+			margin: 5px 3px;
+		}
+
+		&:vertical {
+			background-color: @mori_color_editor_bg;
+			height: 0px;
+			margin: 3px 5px;
+		}
+	}
+
+	& QToolButton {
+
+		border: 1px solid transparent;
+		border-radius: @mori_border_radius_editor;
+		margin: 0px;
+		padding: 1px;
+
+		&:hover {
+			background-color: @mori_color_bg_hover;
+		}
+
+		&:checked,
+		&:pressed {
+			background-color: @mori_color_editor_bg;
+			border: 1px solid @mori_color_editor_border;
+		}
+
+		&::menu-indicator
+		{
+			image: none;
+		}
+		&::menu-button {
+			border-image: none;
+			/*background-color: rgb(160,160,160);*/
+		}
+
+	}
+
+	& QToolBar {
+		border-width: 0px;
+	}
+
+}
+
+QLineEdit {
+	.mori_editor_defaults;
+
+	&:focus {
+		background-color: desaturate(@mori_color_selected_bg, 75%);
+		border-color: @mori_color_selected_border;
+	}
+
+	&:disabled {
+		background-color: @mori_color_disabled_bg;
+		color: @mori_color_disabled_fg;
+	}
+}
+
+QComboBox {
+
+	.mori_editor_defaults;
+
+	&:focus {
+		background-color: @mori_color_selected_bg;
+	}
+
+	/*arrow button*/
+	&::drop-down {
+
+		background-color: @mori_color_bg;
+
+		//.base_outset;
+		border-width: 2px;
+
+		&:hover {
+			background-color: @mori_color_bg_hover;
+		}
+
+		/*pressed state*/
+		&:on {
+			background-color: @mori_color_editor_bg;
+			//.base_inset;
+		}
+	}
+	/*arrow button triangle*/
+	&::down-arrow {
+		image: url("@{image_url}/combo_down_arrow.png");
+	}
+	&:disabled {
+		background-color: @mori_color_disabled_bg;
+		color: @mori_color_disabled_fg;
+	}
+}
+
+QPushButton {
+
+	padding: @mori_padding_button;
+
+	background-color: @mori_color_button_bg;
+	border: 1px solid @mori_color_button_border;
+
+	border-radius: @mori_border_radius_editor;
+
+	&:checked {
+		background-color: @mori_color_selected_bg;
+		border-color: @mori_color_selected_border;
+	}
+
+	&:hover {
+		background-color: lighten(@mori_color_button_bg, 10%);
+
+		&:pressed {
+			border-color: @mori_color_selected_border;
+			background-color: darken(@mori_color_button_bg, 5%);
+		}
+	}
+
+	&:disabled {
+		color: darken(@mori_color_disabled_fg, 5%);
+		background-color: lighten(@mori_color_disabled_bg, 5%);
+		border-color: lighten(@mori_color_button_border, 10%);
+	}
+
+}
+
+#PushButton_NoPadding {
+	.set_padding(3px, 3px);
+}
+
+QCheckBox {
+
+	margin: @mori_margin_editor;
+	padding: @mori_padding_editor;
+
+	&:disabled {
+		color: @mori_color_disabled_fg;
+	}
+
+	&::indicator {
+		border: 1px solid @mori_color_editor_border;
+		background-color: @mori_color_editor_bg;
+
+		border-radius: @mori_border_radius_editor;
+
+		width: 14px;
+		height: 14px;
+
+		&:checked {
+			image: url("@{image_url}/check_indicator.png");
+				&:disabled {
+						image: url("@{image_url}/check_indicator_disabled.png");
+				}
+		}
+	}
+}
+
+QSlider {
+
+	&::groove {
+		background-color: @mori_color_editor_bg;
+		border-top: 1px solid @mori_color_editor_border;
+		border-left: 1px solid @mori_color_editor_border;
+		border-bottom: 1px solid lighten(@mori_color_bg, 10%);
+		border-right: 1px solid lighten(@mori_color_bg, 10%);
+
+		&:horizontal {
+			height: 0px;
+		}
+
+		&:vertical {
+			width: 0px;
+		}
+	}
+
+	&::handle {
+
+		background-color: @mori_gradient_handle;
+		border: 1px solid @mori_color_button_border;
+
+		border-radius: @mori_border_radius_editor;
+
+		&:hover {
+			background-color: @mori_gradient_handle_focus;
+		}
+
+		&:horizontal {
+			width: 9px;
+			margin: -8px 0px;
+		}
+	}
+}
+
+QGroupBox {
+	border: 1px solid @mori_color_editor_bg;
+	.set_margin( 5px, 5px );
+	.set_padding( 3px, 5px );
+	&::title {
+		subcontrol-origin: margin;
+		padding: 0px;
+		margin-top: -4px;
+		/*bottom: 3px;*/
+		left: 15px;
+	}
+	//TODO: Where is this used?
+}
+
+QSplitter::handle {
+
+	background-color: @mori_color_editor_bg;
+
+	&:horizontal {
+		border-left: 1px solid @mori_color_editor_border;
+		border-right: 1px solid lighten(@mori_color_bg, 10%);
+
+		&:hover {
+			background-color: @mori_color_button_bg;
+		}
+	}
+
+	&:vertical {
+		border-top: 1px solid @mori_color_editor_border;
+		border-bottom: 1px solid lighten(@mori_color_bg, 10%);
+
+		&:hover {
+			background-color: @mori_color_button_bg;
+		}
+	}
+}
+
+QTabBar {
+	border: 0px;
+	margin: 0px;
+
+	background-color: @mori_color_bg;
+
+	&::tab {
+
+		padding: @mori_padding_editor;
+
+		background-color: darken(@mori_color_bg, 10%);
+		color: darken(@mori_color_fg, 10%);
+
+		border-top: 1px solid lighten(@mori_color_bg, 20%);
+		border-left: 1px solid lighten(@mori_color_bg, 20%);
+		border-right: 1px solid darken(@mori_color_bg, 20%);
+
+		border-top-left-radius: 1px;
+		border-top-right-radius: 1px;
+
+		&:hover {
+					background-color: darken(@mori_color_bg, 5%);
+		}
+
+		&:selected {
+			background-color: @mori_color_bg, 10%;
+			color: @mori_color_fg;
+
+			border-top: 1px solid lighten(@mori_color_bg, 30%);
+			border-left: 1px solid lighten(@mori_color_bg, 30%);
+
+		}
+	}
+}
+
+QScrollBar {
+	// TODO
+}
+
+
+PaletteViewer #ToolBarContainer {
+  background-color: @mori_color_bg;
+  margin: 0px;
+  padding: 0px;
+  border-left: 1px solid lighten(@mori_color_bg, 10%);
+
+
+  & #keyFrameNavigator {
+    border: 0px;
+  }
+}
+
+#TabBarContainer{
+	.mori_basebg(5%);
+
+  // From original style:
+	& #ScrollLeftButton,
+	& #ScrollRightButton{
+	   margin-top: 1px;
+  }
+}
+
+@import "shell.less";
+@import "popups.less";
+@import "cleanup-settings.less";
+@import "tool-options-bar.less";
+@import "xsheet.less";
+@import "style-editor.less";
+@import "function-editor.less";
+@import "viewer-and-flipbook.less";
+@import "tasks-viewer.less";
+@import "settings-shared.less";
+@import "file-browser.less";
