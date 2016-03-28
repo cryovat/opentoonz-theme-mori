@@ -7,7 +7,7 @@ It is based on the bundled **gray_048** with custom modifications.
 
 The default theme looks like this:
 
-<a href="https://github.com/cryovat/opentoonz-theme-mori/blob/master/screenshots_ot_gray_048.png"><img src="https://github.com/cryovat/opentoonz-theme-mori/blob/master/screenshots_ot_gray_048.png" width="250px" /></a>
+<a href="https://github.com/cryovat/opentoonz-theme-mori/raw/master/screenshots_ot_gray_048.png"><img src="https://github.com/cryovat/opentoonz-theme-mori/raw/master/screenshots_ot_gray_048.png" width="250px" /></a>
 
 This theme looks roughly like this:
 
